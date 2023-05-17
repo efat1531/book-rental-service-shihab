@@ -13,39 +13,45 @@ class AllBookListViewBuilder extends StatelessWidget {
     final bookList =
         Provider.of<BookListProvider>(context, listen: false).bookList;
     return ListView.builder(
-        padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: bookList.length,
-        itemBuilder: (context, index) {
-          GestureDetector(
-            onTap: () {
-              print('ListView Tapped');
-            },
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 19),
-              height: 81,
-              width: MediaQuery.of(context).size.width - 50,
-              color: kBackgroundColor,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: 81,
-                    width: 62,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: kMainColor,
-                    ),
+      padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: bookList.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            print('ListView Tapped');
+          },
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 19),
+            height: 81,
+            width: MediaQuery.of(context).size.width - 50,
+            color: kBackgroundColor,
+            child: Row(
+              children: [
+                Container(
+                  height: 81,
+                  width: 62,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: kMainColor,
                   ),
-                  const SizedBox(
-                    width: 21,
+                  child: Image.network(
+                    bookList[index].imageUrl,
+                    fit: BoxFit.cover,
                   ),
-                  Column(
+                ),
+                const SizedBox(
+                  width: 21,
+                ),
+                Flexible(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: [
                       Text(
                         bookList[index].title,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.openSans(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -56,8 +62,7 @@ class AllBookListViewBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        //populars[index].author,
-                        'Hello',
+                        bookList[index].authorName,
                         style: GoogleFonts.openSans(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -76,11 +81,13 @@ class AllBookListViewBuilder extends StatelessWidget {
                         ),
                       )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

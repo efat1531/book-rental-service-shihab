@@ -127,6 +127,7 @@ class BookListProvider with ChangeNotifier {
         .where((element) => element.category == Categories.education)
         .toList();
   }
+
   List<BookItem> get nonfictionBookList {
     return _bookList
         .where((element) => element.category == Categories.nonfiction)
@@ -137,5 +138,16 @@ class BookListProvider with ChangeNotifier {
     return _bookList
         .where((element) => element.category == Categories.fiction)
         .toList();
+  }
+
+  List<BookItem> searchBook(String inputText) {
+    final suggestBooks = _bookList.where(
+      (element) {
+        final bookTitle = element.title.toLowerCase();
+        final input = inputText.toLowerCase();
+        return bookTitle.contains(input);
+      },
+    ).toList();
+    return suggestBooks;
   }
 }

@@ -10,18 +10,18 @@ class TabBarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _bookList = _choosedIndex == 1
+    final _bookList = _choosedIndex == 0
         ? Provider.of<BookListProvider>(context, listen: false)
             .educationBookList
-        : _choosedIndex == 2
+        : _choosedIndex == 1
             ? Provider.of<BookListProvider>(context, listen: false)
                 .fictionBookList
             : Provider.of<BookListProvider>(context, listen: false)
                 .nonfictionBookList;
     return ListView.builder(
-      padding: EdgeInsets.only(left: 25, right: 6),
+      padding: const EdgeInsets.only(left: 25, right: 6),
       itemCount: _bookList.length,
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return InkWell(
