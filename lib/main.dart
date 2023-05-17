@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import './screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import './providers/book_list_provider.dart';
-import './screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,12 +21,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => BookListProvider())
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner:  false,
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         home: HomeScreen(),
         initialRoute: '/home',
         routes: {
-          '/home':(context) => HomeScreen(),
+          '/home': (context) => HomeScreen(),
         },
       ),
     );
