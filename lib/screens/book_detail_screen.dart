@@ -26,7 +26,7 @@ class BookDetailScreen extends StatelessWidget {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacementNamed('/home');
+                            Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
                           },
                           child: Container(
                             width: 32,
