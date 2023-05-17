@@ -1,4 +1,4 @@
-import '../widgets/all_book_list_builder.dart';
+import '../widgets/popular_book_listView_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -124,7 +124,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25, top: 25),
                 child: Text(
-                  'All Books',
+                  'Popular Books',
                   style: GoogleFonts.openSans(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              AllBookListViewBuilder(),
+              PopularBookListViewBuilder(),
             ],
           ),
         );

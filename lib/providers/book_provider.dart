@@ -16,6 +16,7 @@ class BookItem extends ChangeNotifier {
   final String authorName;
   final Categories category;
   final String imageUrl;
+  final int bookSold;
   BookItem({
     required this.id,
     required this.title,
@@ -25,5 +26,6 @@ class BookItem extends ChangeNotifier {
     required this.quantity,
     required this.category,
     required this.imageUrl,
+    required this.bookSold,
   });
 }

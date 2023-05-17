@@ -14,6 +14,7 @@ class BookListProvider with ChangeNotifier {
       category: Categories.fiction,
       imageUrl:
           'https://i.ibb.co/997Rp8h/Harry-Potter-and-the-Philosopher-s-Stone-Book-Cover.jpg',
+      bookSold: 0,
     ),
     BookItem(
       id: 'B2',
@@ -25,6 +26,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.nonfiction,
       imageUrl: 'https://i.ibb.co/kBLCck7/The-Psychology.png',
+      bookSold: 1,
     ),
     BookItem(
       id: 'B3',
@@ -37,6 +39,7 @@ class BookListProvider with ChangeNotifier {
       category: Categories.fiction,
       imageUrl:
           'https://i.ibb.co/xLJDpQV/Harry-Potter-and-the-Chamber-of-Secrets.jpg',
+      bookSold: 1,
     ),
     BookItem(
       id: 'B4',
@@ -49,6 +52,7 @@ class BookListProvider with ChangeNotifier {
       category: Categories.fiction,
       imageUrl:
           'https://i.ibb.co/LSt7Xcd/Harry-Potter-and-the-Prisoner-of-Azkaban.jpg',
+      bookSold: 3,
     ),
     BookItem(
       id: 'B5',
@@ -60,6 +64,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.nonfiction,
       imageUrl: 'https://i.ibb.co/6Xmy1vS/Fans.png',
+      bookSold: 0,
     ),
     BookItem(
       id: 'B6',
@@ -71,6 +76,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.nonfiction,
       imageUrl: 'https://i.ibb.co/wzStfXz/The-Book-of-Minds.png',
+      bookSold: 1,
     ),
     BookItem(
       id: 'B7',
@@ -82,6 +88,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.fiction,
       imageUrl: 'https://i.ibb.co/Mhr1k0k/Misir-Ali.jpg',
+      bookSold: 10,
     ),
     BookItem(
       id: 'B8',
@@ -93,6 +100,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.education,
       imageUrl: 'https://i.ibb.co/sFtJFrz/TOC.jpg',
+      bookSold: 2,
     ),
     BookItem(
       id: 'B9',
@@ -104,6 +112,7 @@ class BookListProvider with ChangeNotifier {
       quantity: 10,
       category: Categories.education,
       imageUrl: 'https://i.ibb.co/6N4jPMz/Computer-Graphics.png',
+      bookSold: 15,
     ),
     BookItem(
       id: 'B10',
@@ -112,9 +121,10 @@ class BookListProvider with ChangeNotifier {
       amount: 200,
       description:
           'In keeping with the original essence of this distinguished bestseller, the sixth edition presents C programming concepts in a simple, clear and logical order, thus making it ideal for novices. This text uses sample programs, case studies, programming problems, projects and many more pedagogical aids to enable better understanding of the C language. The hallmark of this edition is its new avatar in color, to enhance visual appeal and make learning a pleasure!',
-      quantity: 10,
+      quantity: 1,
       category: Categories.education,
       imageUrl: 'https://i.ibb.co/KhmZ6wb/ANSI-C.jpg',
+      bookSold: 20,
     ),
   ];
 
@@ -138,6 +148,12 @@ class BookListProvider with ChangeNotifier {
     return _bookList
         .where((element) => element.category == Categories.fiction)
         .toList();
+  }
+
+  List<BookItem> get popularList {
+    final orginalList = _bookList.toList();
+    orginalList.sort(((b, a) => a.bookSold.compareTo(b.bookSold)));
+    return orginalList;
   }
 
   List<BookItem> searchBook(String inputText) {

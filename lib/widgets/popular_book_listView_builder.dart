@@ -6,12 +6,13 @@ import 'package:provider/provider.dart';
 
 import '../constants/color_constant.dart';
 import '../providers/book_list_provider.dart';
+import '../screens/book_detail_screen.dart';
 
-class AllBookListViewBuilder extends StatelessWidget {
+class PopularBookListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bookList =
-        Provider.of<BookListProvider>(context, listen: false).bookList;
+        Provider.of<BookListProvider>(context, listen: false).popularList;
     return ListView.builder(
       padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
       physics: const BouncingScrollPhysics(),
@@ -20,7 +21,7 @@ class AllBookListViewBuilder extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            print('ListView Tapped');
+            Navigator.of(context).pushNamedAndRemoveUntil(BookDetailScreen.routeName, (route) => false);
           },
           child: Container(
             margin: const EdgeInsets.only(bottom: 19),
@@ -79,7 +80,7 @@ class AllBookListViewBuilder extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           color: kBlackColor,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )

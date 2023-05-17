@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../constants/color_constant.dart';
 import '../providers/book_list_provider.dart';
+import '../screens/book_detail_screen.dart';
 
 class TabBarViewWidget extends StatelessWidget {
   final int _choosedIndex;
@@ -10,7 +11,7 @@ class TabBarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _bookList = _choosedIndex == 0
+    final bookList = _choosedIndex == 0
         ? Provider.of<BookListProvider>(context, listen: false)
             .educationBookList
         : _choosedIndex == 1
@@ -20,13 +21,13 @@ class TabBarViewWidget extends StatelessWidget {
                 .nonfictionBookList;
     return ListView.builder(
       padding: const EdgeInsets.only(left: 25, right: 6),
-      itemCount: _bookList.length,
+      itemCount: bookList.length,
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return InkWell(
+        return GestureDetector(
           onTap: () {
-            print(_bookList[index].title);
+            Navigator.of(context).pushNamedAndRemoveUntil(BookDetailScreen.routeName, (route) => false);
           },
           child: Container(
             margin: const EdgeInsets.only(right: 19),
@@ -42,7 +43,7 @@ class TabBarViewWidget extends StatelessWidget {
                 topRight: Radius.circular(10),
               ),
               child: Image.network(
-                _bookList[index].imageUrl,
+                bookList[index].imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
