@@ -1,29 +1,32 @@
-// ignore_for_file: use_key_in_widget_constructors
+
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/color_constant.dart';
+import '../providers/book_provider.dart';
 import '../providers/book_list_provider.dart';
 import '../screens/book_detail_screen.dart';
 
-class PopularBookListViewBuilder extends StatelessWidget {
+class SimilarCategoryBooks extends StatelessWidget {
+  final BookItem bookReceived;
+  SimilarCategoryBooks(this.bookReceived);
   @override
   Widget build(BuildContext context) {
-    final bookList =
-        Provider.of<BookListProvider>(context).popularList;
+    final similarBookList =
+        Provider.of<BookListProvider>(context).similarTypeBooks(bookReceived);
     return ListView.builder(
+      itemCount: similarBookList.length,
       padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
-      itemCount: bookList.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
               BookDetailScreen.routeName,
-              arguments: bookList[index].id,
+              arguments: similarBookList[index].id,
             );
           },
           child: Container(
@@ -41,7 +44,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                     color: kMainColor,
                   ),
                   child: Image.network(
-                    bookList[index].imageUrl,
+                    similarBookList[index].imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,7 +57,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        bookList[index].title,
+                        similarBookList[index].title,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.openSans(
                           fontSize: 16,
@@ -66,7 +69,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        bookList[index].authorName,
+                        similarBookList[index].authorName,
                         style: GoogleFonts.openSans(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -77,7 +80,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        '\$${bookList[index].amount}',
+                        '\$${similarBookList[index].amount}',
                         style: GoogleFonts.openSans(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,

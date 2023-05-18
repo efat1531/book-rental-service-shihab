@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:collection/collection.dart';
 
 import 'book_provider.dart';
 
@@ -153,7 +154,7 @@ class BookListProvider with ChangeNotifier {
   List<BookItem> get popularList {
     final orginalList = _bookList.toList();
     orginalList.sort(((b, a) => a.bookSold.compareTo(b.bookSold)));
-    return orginalList;
+    return orginalList.where((element) => element.quantity > 0).toList();
   }
 
   List<BookItem> searchBook(String inputText) {
@@ -165,5 +166,17 @@ class BookListProvider with ChangeNotifier {
       },
     ).toList();
     return suggestBooks;
+  }
+
+  BookItem getItemById(String id) {
+    return _bookList.firstWhere((element) => element.id == id);
+  }
+
+  List<BookItem> similarTypeBooks(BookItem receivedBook) {
+    final filteredList = _bookList
+        .where((element) => element.category == receivedBook.category)
+        .toList();
+    filteredList.shuffle();
+    return filteredList;
   }
 }

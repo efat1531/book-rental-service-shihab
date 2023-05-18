@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
 import './screens/home_screen.dart';
-import 'package:flutter/material.dart';
 import './providers/book_list_provider.dart';
 import './screens/book_detail_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => BookListProvider())
+        
+        ChangeNotifierProvider(
+          create: (context) => BookListProvider(),
+        ),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -31,10 +35,10 @@ class MyApp extends StatelessWidget {
           BookDetailScreen.routeName: (context) => BookDetailScreen(),
         },
         onGenerateRoute: (settings) {
-          return MaterialPageRoute(builder: (context) => BookDetailScreen());
+          return MaterialPageRoute(builder: (context) => HomeScreen());
         },
         onUnknownRoute: (settings) {
-          return MaterialPageRoute(builder: (context) => BookDetailScreen());
+          return MaterialPageRoute(builder: (context) => HomeScreen());
         },
       ),
     );

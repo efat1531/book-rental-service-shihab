@@ -28,4 +28,9 @@ class BookItem extends ChangeNotifier {
     required this.imageUrl,
     required this.bookSold,
   });
+
+  void isFavouriteToggle() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }
