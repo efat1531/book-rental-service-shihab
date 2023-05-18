@@ -6,6 +6,7 @@ import '../widgets/custom_tab_indicator.dart';
 import '../widgets/tab_bar_view_widget.dart';
 import '../widgets/search_bar_widget.dart';
 import '../constants/color_constant.dart';
+import '../screens/all_book_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -92,8 +93,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        print(
-                            'Current selected index -> ${DefaultTabController.of(context).index}');
+                        Navigator.of(context).pushNamed(
+                          AllBookScreen.routeName,
+                          arguments: DefaultTabController.of(context).index,
+                        );
                       },
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.all(0),

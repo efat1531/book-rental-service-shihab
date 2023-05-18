@@ -1,35 +1,26 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import '../constants/color_constant.dart';
-import '../providers/book_provider.dart';
 import '../providers/book_list_provider.dart';
-import '../screens/book_detail_screen.dart';
+import '../providers/book_provider.dart';
 
-class SimilarCategoryBooks extends StatelessWidget {
-  final BookItem bookReceived;
-  SimilarCategoryBooks(this.bookReceived);
+class SimilarBookListViewBuilder extends StatelessWidget {
+  final BookItem receivedBook;
+  const SimilarBookListViewBuilder(this.receivedBook);
+
   @override
   Widget build(BuildContext context) {
     final similarBookList =
-        Provider.of<BookListProvider>(context).similarTypeBooks(bookReceived);
-    return ListView.builder(
-      itemCount: similarBookList.length,
-      padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              BookDetailScreen.routeName,
-              arguments: similarBookList[index].id,
-            );
-          },
-          child: Container(
+        Provider.of<BookListProvider>(context).similarBookList(receivedBook);
+    return Padding(
+      padding: const EdgeInsets.only(left: 25, right: 25,top: 10),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: similarBookList.length,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) {
+          return Container(
             margin: const EdgeInsets.only(bottom: 19),
             height: 81,
             width: MediaQuery.of(context).size.width - 50,
@@ -92,9 +83,9 @@ class SimilarCategoryBooks extends StatelessWidget {
                 )
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

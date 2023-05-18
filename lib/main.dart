@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import './screens/home_screen.dart';
 import './providers/book_list_provider.dart';
 import './screens/book_detail_screen.dart';
+import './screens/all_book_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => HomeScreen(),
           BookDetailScreen.routeName: (context) => BookDetailScreen(),
+          AllBookScreen.routeName:(context) => AllBookScreen(),
         },
         onGenerateRoute: (settings) {
           return MaterialPageRoute(builder: (context) => HomeScreen());

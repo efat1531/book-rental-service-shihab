@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import '../providers/book_list_provider.dart';
-import '../widgets/custom_tab_indicator.dart';
 
 class BookDetailScreen extends StatelessWidget {
   static String routeName = '/bookDetails';
@@ -15,6 +14,27 @@ class BookDetailScreen extends StatelessWidget {
     final bookDetails = Provider.of<BookListProvider>(context, listen: false)
         .getItemById(bookId);
     return Scaffold(
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+        height: 49,
+        color: Colors.transparent,
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            backgroundColor: kMainColor,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+          child: Text(
+            'Add to Library',
+            style: GoogleFonts.openSans(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: kWhiteColor,
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           child: CustomScrollView(
@@ -142,35 +162,22 @@ class BookDetailScreen extends StatelessWidget {
                     ),
                     Container(
                       height: 28,
-                      margin: const EdgeInsets.only(top: 23, bottom: 36),
+                      margin: const EdgeInsets.only(top: 23, bottom: 15),
                       padding: const EdgeInsets.only(left: 25),
-                      child: DefaultTabController(
-                        length: 1,
-                        child: TabBar(
-                          labelPadding: const EdgeInsets.all(0),
-                          indicatorPadding: const EdgeInsets.all(0),
-                          isScrollable: true,
-                          labelColor: kBlackColor,
-                          unselectedLabelColor: kGreyColor,
-                          labelStyle: GoogleFonts.openSans(
-                              fontSize: 14, fontWeight: FontWeight.w700),
-                          unselectedLabelStyle: GoogleFonts.openSans(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                          indicator: RoundedRectangleTabIndicator(
-                              weight: 2, width: 30, color: kBlackColor),
-                          tabs: [
-                            Tab(
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 39),
-                                child: const Text('Description'),
-                              ),
-                            ),
-                          ],
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 39),
+                        child: Text(
+                          'Description',
+                          style: GoogleFonts.openSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+                      padding: const EdgeInsets.only(
+                          left: 25, right: 25, bottom: 25),
                       child: Text(
                         bookDetails.description,
                         style: GoogleFonts.openSans(
@@ -181,7 +188,7 @@ class BookDetailScreen extends StatelessWidget {
                           height: 2,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

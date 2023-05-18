@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:collection/collection.dart';
 
 import 'book_provider.dart';
 
@@ -172,11 +171,12 @@ class BookListProvider with ChangeNotifier {
     return _bookList.firstWhere((element) => element.id == id);
   }
 
-  List<BookItem> similarTypeBooks(BookItem receivedBook) {
-    final filteredList = _bookList
+  List<BookItem> similarBookList(BookItem receivedBook) {
+    final orginalList = _bookList
         .where((element) => element.category == receivedBook.category)
         .toList();
-    filteredList.shuffle();
-    return filteredList;
+    orginalList.shuffle();
+    orginalList.removeWhere((element) => element.id == receivedBook.id);
+    return orginalList;
   }
 }
