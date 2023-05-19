@@ -153,7 +153,7 @@ class BookListProvider with ChangeNotifier {
   List<BookItem> get popularList {
     final orginalList = _bookList.toList();
     orginalList.sort(((b, a) => a.bookSold.compareTo(b.bookSold)));
-    return orginalList.where((element) => element.quantity > 0).toList();
+    return orginalList.where((element) => element.bookSold > 0).toList();
   }
 
   List<BookItem> searchBook(String inputText) {

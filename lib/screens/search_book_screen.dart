@@ -19,7 +19,7 @@ class SearchBookScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 25, top: 25),
+            padding:const EdgeInsets.only(left: 25, top: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

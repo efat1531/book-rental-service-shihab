@@ -31,11 +31,17 @@ class AllBookScreen extends StatelessWidget {
               SliverAppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: kMainColor,
-                expandedHeight: MediaQuery.of(context).size.height * 0.25,
+                expandedHeight: 190,
                 flexibleSpace: Container(
-                  height: MediaQuery.of(context).size.height * 0.25,
+                  height: 190,
                   child: Stack(
                     children: [
+                      Positioned(
+                        child: Image.network(
+                          'https://i.ibb.co/dMydTgB/Educational-Book-Poster.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       Positioned(
                         left: 25,
                         top: 35,
@@ -118,12 +124,12 @@ class AllBookScreen extends StatelessWidget {
                                 //margin: const EdgeInsets.only(bottom: 19),
                                 height: 81,
                                 width: MediaQuery.of(context).size.width - 50,
-                                decoration:const BoxDecoration(
+                                decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(8),
                                     bottomRight: Radius.circular(8),
                                   ),
-                                color: kBackgroundColor,
+                                  color: kBackgroundColor,
                                 ),
                                 child: Row(
                                   children: [
@@ -135,7 +141,7 @@ class AllBookScreen extends StatelessWidget {
                                         color: kMainColor,
                                       ),
                                       child: ClipRRect(
-                                        borderRadius:  BorderRadius.circular(5),
+                                        borderRadius: BorderRadius.circular(5),
                                         child: Image.network(
                                           bookList[index].imageUrl,
                                           fit: BoxFit.cover,
