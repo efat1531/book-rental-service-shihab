@@ -134,9 +134,12 @@ class AllBookScreen extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(5),
                                         color: kMainColor,
                                       ),
-                                      child: Image.network(
-                                        bookList[index].imageUrl,
-                                        fit: BoxFit.cover,
+                                      child: ClipRRect(
+                                        borderRadius:  BorderRadius.circular(5),
+                                        child: Image.network(
+                                          bookList[index].imageUrl,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(

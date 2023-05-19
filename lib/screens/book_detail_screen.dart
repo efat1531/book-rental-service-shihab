@@ -6,8 +6,14 @@ import '../constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import '../providers/book_list_provider.dart';
 
-class BookDetailScreen extends StatelessWidget {
+class BookDetailScreen extends StatefulWidget {
   static String routeName = '/bookDetails';
+
+  @override
+  State<BookDetailScreen> createState() => _BookDetailScreenState();
+}
+
+class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final bookId = ModalRoute.of(context)!.settings.arguments as String;
@@ -15,7 +21,7 @@ class BookDetailScreen extends StatelessWidget {
         .getItemById(bookId);
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
         height: 49,
         color: Colors.transparent,
         child: TextButton(
@@ -78,7 +84,11 @@ class BookDetailScreen extends StatelessWidget {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
-                            print('User tapped the icon');
+                            setState(() {
+                              bookDetails.isFavourite =
+                                  !bookDetails.isFavourite;
+                              print('Added as favourite');
+                            });
                           },
                           child: Container(
                             width: 32,

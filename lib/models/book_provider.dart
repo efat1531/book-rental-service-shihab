@@ -1,12 +1,10 @@
-import 'package:flutter/widgets.dart';
-
 enum Categories {
   education,
   fiction,
   nonfiction,
 }
 
-class BookItem extends ChangeNotifier {
+class BookItem {
   final String id;
   final String title;
   final int amount;
@@ -28,9 +26,4 @@ class BookItem extends ChangeNotifier {
     required this.imageUrl,
     required this.bookSold,
   });
-
-  void isFavouriteToggle() {
-    isFavourite = !isFavourite;
-    notifyListeners();
-  }
 }

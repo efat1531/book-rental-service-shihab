@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'book_provider.dart';
+import '../models/book_provider.dart';
 
 class BookListProvider with ChangeNotifier {
   final List<BookItem> _bookList = [
