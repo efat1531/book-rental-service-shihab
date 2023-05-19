@@ -17,11 +17,26 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       child: Builder(builder: (context) {
         return Scaffold(
+          drawer: Drawer(
+            child: ListView(
+              children: <Widget>[
+                ListTile(
+                  title: Text('Home'),
+                ),
+                ListTile(
+                  title: Text('Settings'),
+                ),
+                ListTile(
+                  title: Text('Help'),
+                ),
+              ],
+            ),
+          ),
           body: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 25),
+                padding: EdgeInsets.only(left: 25, top: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
