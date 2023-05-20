@@ -31,73 +31,73 @@ class AllBookScreen extends StatelessWidget {
               SliverAppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: kMainColor,
+                
                 expandedHeight: 190,
-                flexibleSpace: Container(
-                  height: 190,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        child: Image.network(
-                          'https://i.ibb.co/dMydTgB/Educational-Book-Poster.png',
-                          fit: BoxFit.cover,
-                        ),
+                flexibleSpace: Stack(
+                  children: [
+                    Container(
+                       height: 190,
+                        width: double.infinity,
+                      child: Image.network(
+                        'https://i.ibb.co/dMydTgB/Educational-Book-Poster.png',
+                        fit: BoxFit.cover,
                       ),
-                      Positioned(
-                        left: 25,
-                        top: 35,
-                        child: GestureDetector(
-                          onTap: () {
-                            if (Navigator.of(context).canPop()) {
-                              Navigator.of(context).pop();
-                            } else {
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  '/home', (route) => false);
-                            }
-                          },
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: kWhiteColor,
-                            ),
-                            child: SvgPicture.asset(
-                              'assets/icons/icon_back_arrow.svg',
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 30,
-                        right: 22,
+                    ),
+                    Positioned(
+                      left: 25,
+                      top: 35,
+                      child: GestureDetector(
+                        onTap: () {
+                          if (Navigator.of(context).canPop()) {
+                            Navigator.of(context).pop();
+                          } else {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/home', (route) => false);
+                          }
+                        },
                         child: Container(
-                          decoration: const BoxDecoration(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
                             color: kWhiteColor,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(8),
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(8),
-                            ),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          height: 60,
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              titleToDisplay,
-                              style: GoogleFonts.raleway(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          child: SvgPicture.asset(
+                            'assets/icons/icon_back_arrow.svg',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 30,
+                      right: 22,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: kWhiteColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(8),
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(8),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: 60,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            titleToDisplay,
+                            style: GoogleFonts.raleway(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SliverList(

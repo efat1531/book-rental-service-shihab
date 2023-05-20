@@ -63,6 +63,11 @@ class MainDrawer extends StatelessWidget {
            */
           const Divider(),
           buildListTile('Home', Icons.home),
+          const Divider(),
+          buildListTile('Orders', Icons.assignment_outlined),
+          const Divider(),
+          buildListTile('Cart', Icons.shopping_cart_outlined),
+          const Divider(),
 
         ],
       ),
