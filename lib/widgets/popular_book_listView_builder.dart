@@ -10,9 +10,12 @@ import '../screens/book_detail_screen.dart';
 
 class PopularBookListViewBuilder extends StatelessWidget {
   @override
+  
   Widget build(BuildContext context) {
+    /** Received the Book List for display */
     final bookList =
         Provider.of<BookListProvider>(context).popularList;
+    /** This will build the list for display data */
     return ListView.builder(
       padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
       physics: const BouncingScrollPhysics(),

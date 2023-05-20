@@ -49,6 +49,9 @@ class MainDrawer extends StatelessWidget {
             thickness: 1.2,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
+          /**
+           * This list tile for Home. User will go to home screen
+           */
           ListTile(
             minLeadingWidth: 2,
             leading: const Icon(
@@ -72,6 +75,9 @@ class MainDrawer extends StatelessWidget {
             thickness: 1.2,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
+          /**
+           * This list tile for Order Screen. User will go to order screen.
+           */
           ListTile(
             minLeadingWidth: 2,
             leading: const Icon(
@@ -95,6 +101,9 @@ class MainDrawer extends StatelessWidget {
             thickness: 1.2,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
+          /**
+           * This list tile is used for Cart. User will go to cart screen
+           */
           ListTile(
             minLeadingWidth: 2,
             leading: const Icon(
@@ -117,6 +126,9 @@ class MainDrawer extends StatelessWidget {
             thickness: 1.2,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
+          /**
+           * This list tile is used for Favourite Books. User will go to favourite Screen
+           */
           ListTile(
             minLeadingWidth: 2,
             leading: const Icon(
