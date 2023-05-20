@@ -8,6 +8,9 @@ import './providers/book_list_provider.dart';
 import './screens/book_detail_screen.dart';
 import './screens/all_book_screen.dart';
 import './screens/search_book_screen.dart';
+import './screens/cart_screen.dart';
+import './screens/favourte_screen.dart';
+import './screens/order_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,11 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        
         ChangeNotifierProvider(
           create: (context) => BookListProvider(),
         ),
-
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,8 +36,11 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => HomeScreen(),
           BookDetailScreen.routeName: (context) => BookDetailScreen(),
-          AllBookScreen.routeName:(context) => AllBookScreen(),
-          SearchBookScreen.routeName:(context) => SearchBookScreen(),
+          AllBookScreen.routeName: (context) => AllBookScreen(),
+          SearchBookScreen.routeName: (context) => SearchBookScreen(),
+          OrderHistoryScreen.routeName: (context) => OrderHistoryScreen(),
+          FavouriteScreen.routeName: (context) => FavouriteScreen(),
+          CartScreen.routeName: (context) => CartScreen(),
         },
         onGenerateRoute: (settings) {
           return MaterialPageRoute(builder: (context) => HomeScreen());

@@ -3,27 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
-class MainDrawer extends StatelessWidget {
-  Widget buildListTile(String title, IconData icon) {
-    return ListTile(
-      minLeadingWidth: 2,
-      leading: Icon(
-        icon,
-      ),
-      title: Text(
-        title,
-        style: GoogleFonts.openSans(
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
-          fontSize: 15,
-        ),
-      ),
-      onTap: () {
-        print('Something please');
-      },
-    );
-  }
+import '../screens/cart_screen.dart';
+import '../screens/favourte_screen.dart';
+import '../screens/order_screen.dart';
 
+class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -61,14 +45,101 @@ class MainDrawer extends StatelessWidget {
           /**
            * Create a line for visual demonstration
            */
-          const Divider(),
-          buildListTile('Home', Icons.home),
-          const Divider(),
-          buildListTile('Orders', Icons.assignment_outlined),
-          const Divider(),
-          buildListTile('Cart', Icons.shopping_cart_outlined),
-          const Divider(),
-
+          const Divider(
+            thickness: 1.2,
+            color: Color.fromRGBO(191, 191, 191, 1),
+          ),
+          ListTile(
+            minLeadingWidth: 2,
+            leading: const Icon(
+              Icons.home,
+              color: kMainColor,
+            ),
+            title: Text(
+              'Home',
+              style: GoogleFonts.openSans(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 15,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/home', (route) => false);
+            },
+          ),
+          const Divider(
+            thickness: 1.2,
+            color: Color.fromRGBO(191, 191, 191, 1),
+          ),
+          ListTile(
+            minLeadingWidth: 2,
+            leading: const Icon(
+              Icons.assignment_outlined,
+              color: kMainColor,
+            ),
+            title: Text(
+              'Orders',
+              style: GoogleFonts.openSans(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 15,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(OrderHistoryScreen.routeName);
+            },
+          ),
+          const Divider(
+            thickness: 1.2,
+            color: Color.fromRGBO(191, 191, 191, 1),
+          ),
+          ListTile(
+            minLeadingWidth: 2,
+            leading: const Icon(
+              Icons.shopping_cart_outlined,
+              color: kMainColor,
+            ),
+            title: Text(
+              'Cart',
+              style: GoogleFonts.openSans(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 15,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed(CartScreen.routeName);
+            },
+          ),
+          const Divider(
+            thickness: 1.2,
+            color: Color.fromRGBO(191, 191, 191, 1),
+          ),
+          ListTile(
+            minLeadingWidth: 2,
+            leading: const Icon(
+              Icons.star_outline_rounded,
+              color: kMainColor,
+            ),
+            title: Text(
+              'Favourites',
+              style: GoogleFonts.openSans(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 15,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(FavouriteScreen.routeName);
+            },
+          ),
+          const Divider(
+            thickness: 1.2,
+            color: Color.fromRGBO(191, 191, 191, 1),
+          ),
         ],
       ),
     );

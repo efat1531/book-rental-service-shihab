@@ -31,17 +31,13 @@ class AllBookScreen extends StatelessWidget {
               SliverAppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: kMainColor,
-                
                 expandedHeight: 190,
                 flexibleSpace: Stack(
                   children: [
                     Container(
-                       height: 190,
-                        width: double.infinity,
-                      child: Image.network(
-                        'https://i.ibb.co/dMydTgB/Educational-Book-Poster.png',
-                        fit: BoxFit.cover,
-                      ),
+                      height: 190,
+                      width: double.infinity,
+                      child: Image.asset('assets/images/edu_poster.png'),
                     ),
                     Positioned(
                       left: 25,
@@ -69,11 +65,11 @@ class AllBookScreen extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: 30,
-                      right: 22,
+                      bottom: 10,
+                      right: 6,
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: kWhiteColor,
+                          color: Colors.black54,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(8),
@@ -92,6 +88,7 @@ class AllBookScreen extends StatelessWidget {
                             style: GoogleFonts.raleway(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
+                              color: kWhiteColor,
                             ),
                           ),
                         ),

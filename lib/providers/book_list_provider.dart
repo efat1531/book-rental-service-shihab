@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 
 import '../models/book_provider.dart';
@@ -127,7 +129,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B11',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -139,7 +141,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B12',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -151,7 +153,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B13',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -163,7 +165,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B14',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -175,7 +177,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B15',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -187,7 +189,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B16',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -199,7 +201,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B17',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -211,7 +213,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B18',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -223,7 +225,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B19',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -235,7 +237,7 @@ class BookListProvider with ChangeNotifier {
       bookSold: 20,
     ),
     BookItem(
-      id: 'B10',
+      id: 'B20',
       title: 'Programming in ANSI C',
       authorName: 'E. Balagurusamy',
       amount: 200,
@@ -273,7 +275,10 @@ class BookListProvider with ChangeNotifier {
   List<BookItem> get popularList {
     final orginalList = _bookList.toList();
     orginalList.sort(((b, a) => a.bookSold.compareTo(b.bookSold)));
-    return orginalList.where((element) => element.bookSold > 0).toList();
+    orginalList.where((element) => element.bookSold > 0).toList();
+    List<BookItem> returnList =
+        orginalList.take(min(10, orginalList.length)).toList();
+    return returnList;
   }
 
   List<BookItem> searchBook(String inputText) {
@@ -297,6 +302,8 @@ class BookListProvider with ChangeNotifier {
         .toList();
     orginalList.shuffle();
     orginalList.removeWhere((element) => element.id == receivedBook.id);
-    return orginalList;
+    List<BookItem> returnList =
+        orginalList.take(min(10, orginalList.length)).toList();
+    return returnList;
   }
 }
