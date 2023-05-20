@@ -7,6 +7,7 @@ import '../widgets/tab_bar_view_widget.dart';
 import '../widgets/search_bar_widget.dart';
 import '../constants/color_constant.dart';
 import '../screens/all_book_screen.dart';
+import '../widgets/main_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,21 +18,7 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       child: Builder(builder: (context) {
         return Scaffold(
-          drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                ListTile(
-                  title: Text('Home'),
-                ),
-                ListTile(
-                  title: Text('Settings'),
-                ),
-                ListTile(
-                  title: Text('Help'),
-                ),
-              ],
-            ),
-          ),
+          drawer: MainDrawer(),
           body: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
