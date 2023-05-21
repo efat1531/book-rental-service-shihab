@@ -306,4 +306,8 @@ class BookListProvider with ChangeNotifier {
         orginalList.take(min(10, orginalList.length)).toList();
     return returnList;
   }
+
+  List<BookItem> get favourites {
+    return _bookList.where((element) => element.isFavourite == true).toList();
+  }
 }
