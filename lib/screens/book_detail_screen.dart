@@ -27,7 +27,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
         color: Colors.transparent,
         child: TextButton(
           onPressed: () {
-            Provider.of<CartProvider>(context, listen: false).addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
+            Provider.of<CartProvider>(context, listen: false)
+                .addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
           },
           style: TextButton.styleFrom(
             backgroundColor: kMainColor,
@@ -64,7 +65,6 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                             if (Navigator.of(context).canPop()) {
                               Navigator.of(context).pop();
                             } else {
-                              
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   '/home', (route) => false);
                             }
@@ -102,8 +102,14 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                               color: kWhiteColor,
                             ),
                             child: bookDetails.isFavourite
-                                ? const Icon(Icons.favorite)
-                                : const Icon(Icons.favorite_border_outlined),
+                                ? const Icon(
+                                    Icons.favorite,
+                                    color: kMainColor,
+                                  )
+                                : const Icon(
+                                    Icons.favorite_border_outlined,
+                                    color: kMainColor,
+                                  ),
                           ),
                         ),
                       ),
@@ -133,7 +139,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                 delegate: SliverChildListDelegate(
                   [
                     Padding(
-                      padding: EdgeInsets.only(top: 24, left: 25),
+                      padding: const EdgeInsets.only(top: 24, left: 25),
                       child: Text(
                         bookDetails.title,
                         style: GoogleFonts.openSans(
@@ -143,7 +149,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 7, left: 25),
+                      padding: const EdgeInsets.only(top: 7, left: 25),
                       child: Text(
                         bookDetails.authorName,
                         style: GoogleFonts.openSans(
@@ -153,7 +159,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 7, left: 25),
+                      padding: const EdgeInsets.only(top: 7, left: 25),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

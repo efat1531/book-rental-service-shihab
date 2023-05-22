@@ -8,6 +8,7 @@ class CartProvider with ChangeNotifier {
   Map<String, CartItem> get cartItem {
     return {..._cartItem};
   }
+
   /// this fuction add item to cart
   void addItem(String bookId, int amount, String title) {
     if (_cartItem.containsKey(bookId) == false) {
@@ -22,6 +23,7 @@ class CartProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
   /// This item to get TotalAmount
   int getTotalAmount() {
     int total = 0;
@@ -34,9 +36,15 @@ class CartProvider with ChangeNotifier {
   int get getItemLength {
     return _cartItem.length;
   }
+
   /// This fuction is to remove item from cart
   void removeFromCart(String id) {
     _cartItem.removeWhere((key, value) => key == id);
+    notifyListeners();
+  }
+
+  void clear() {
+    _cartItem.clear();
     notifyListeners();
   }
 }

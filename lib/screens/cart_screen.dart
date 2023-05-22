@@ -8,6 +8,7 @@ import '../providers/cart_provider.dart';
 import '../constants/color_constant.dart';
 import '../widgets/main_drawer.dart';
 import '../widgets/cart_item_listview_builder.dart';
+import '../providers/orders_provider.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = '/home/cart';
@@ -70,7 +71,12 @@ class CartScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      print('Order Now in work');
+                      Provider.of<OrderProvider>(context, listen: false)
+                          .addOrder(
+                        cartItemProvider.getTotalAmount(),
+                        cartItemProvider.cartItem.values.toList(),
+                      );
+                      cartItemProvider.clear();
                     },
                     child: Text(
                       'Order Now',
