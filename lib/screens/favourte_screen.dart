@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../constants/color_constant.dart';
 import '../providers/book_list_provider.dart';
 import './book_detail_screen.dart';
+import '../widgets/main_drawer.dart';
 
 class FavouriteScreen extends StatefulWidget {
   static String routeName = '/home/favourites';
@@ -20,6 +21,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   Widget build(BuildContext context) {
     final bookList = Provider.of<BookListProvider>(context).favourites;
     return Scaffold(
+      drawer: MainDrawer(),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [

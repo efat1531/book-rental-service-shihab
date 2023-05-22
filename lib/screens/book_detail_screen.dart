@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import '../providers/book_list_provider.dart';
+import '../providers/cart_provider.dart';
 
 class BookDetailScreen extends StatefulWidget {
   static String routeName = '/bookDetails';
@@ -25,14 +26,16 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
         height: 49,
         color: Colors.transparent,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Provider.of<CartProvider>(context, listen: false).addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
+          },
           style: TextButton.styleFrom(
             backgroundColor: kMainColor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
           child: Text(
-            'Add to Library',
+            'Add to Cart',
             style: GoogleFonts.openSans(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -84,11 +87,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              bookDetails.isFavourite =
-                                  !bookDetails.isFavourite;
-                              print('Added as favourite');
-                            });
+                            setState(
+                              () {
+                                bookDetails.isFavourite =
+                                    !bookDetails.isFavourite;
+                              },
+                            );
                           },
                           child: Container(
                             width: 32,

@@ -30,7 +30,7 @@ class MainDrawer extends StatelessWidget {
            * Welcome text 
            */
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
             width: double.infinity,
             child: Text(
               'Welcome to the app',
@@ -46,14 +46,24 @@ class MainDrawer extends StatelessWidget {
            * Create a line for visual demonstration
            */
           const Divider(
-            thickness: 1.2,
+            thickness: 0.3,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
           /**
            * This list tile for Home. User will go to home screen
            */
           ListTile(
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
+            dense: true,
             minLeadingWidth: 2,
+            // contentPadding:const EdgeInsets.only(
+            //   left: 10,
+            //   right: 20,
+            //   top: 10,
+            //   bottom: 5,
+            // ),
             leading: const Icon(
               Icons.home,
               color: kMainColor,
@@ -72,13 +82,17 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           const Divider(
-            thickness: 1.2,
+            thickness: 0.3,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
           /**
            * This list tile for Order Screen. User will go to order screen.
            */
           ListTile(
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
+            dense: true,
             minLeadingWidth: 2,
             leading: const Icon(
               Icons.assignment_outlined,
@@ -93,18 +107,21 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context)
-                  .pushNamed(OrderHistoryScreen.routeName);
+              Navigator.of(context).pushNamed(OrderHistoryScreen.routeName);
             },
           ),
           const Divider(
-            thickness: 1.2,
+            thickness: 0.3,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
           /**
            * This list tile is used for Cart. User will go to cart screen
            */
           ListTile(
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
+            dense: true,
             minLeadingWidth: 2,
             leading: const Icon(
               Icons.shopping_cart_outlined,
@@ -123,13 +140,17 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           const Divider(
-            thickness: 1.2,
+            thickness: 0.3,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
           /**
            * This list tile is used for Favourite Books. User will go to favourite Screen
            */
           ListTile(
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
+            dense: true,
             minLeadingWidth: 2,
             leading: const Icon(
               Icons.star_outline_rounded,
@@ -144,12 +165,11 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context)
-                  .pushNamed(FavouriteScreen.routeName);
+              Navigator.of(context).pushNamed(FavouriteScreen.routeName);
             },
           ),
           const Divider(
-            thickness: 1.2,
+            thickness: 0.3,
             color: Color.fromRGBO(191, 191, 191, 1),
           ),
         ],

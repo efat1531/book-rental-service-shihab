@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../constants/color_constant.dart';
 import '../providers/book_list_provider.dart';
 import './book_detail_screen.dart';
+import '../widgets/main_drawer.dart';
 
 class SearchBookScreen extends StatelessWidget {
   static String routeName = '/searchBook';
@@ -15,11 +16,12 @@ class SearchBookScreen extends StatelessWidget {
     final filteredBookList =
         Provider.of<BookListProvider>(context).searchBook(searchText);
     return Scaffold(
+      drawer: MainDrawer(),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
           Padding(
-            padding:const EdgeInsets.only(left: 25, top: 25),
+            padding: const EdgeInsets.only(left: 25, top: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

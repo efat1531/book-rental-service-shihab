@@ -11,6 +11,7 @@ import './screens/search_book_screen.dart';
 import './screens/cart_screen.dart';
 import './screens/favourte_screen.dart';
 import './screens/order_screen.dart';
+import './providers/cart_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,9 +25,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        /**Book List provider for data and others */
         ChangeNotifierProvider(
           create: (context) => BookListProvider(),
         ),
+        /** Cart Provider for cart data and everything else */
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
