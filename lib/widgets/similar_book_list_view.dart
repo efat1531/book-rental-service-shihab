@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../constants/color_constant.dart';
 import '../providers/book_list_provider.dart';
-import '../models/book_provider.dart';
+import '../models/bookItem.dart';
 
 class SimilarBookListViewBuilder extends StatelessWidget {
   final BookItem receivedBook;

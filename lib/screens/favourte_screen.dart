@@ -46,53 +46,49 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed(
+                  Navigator.of(context).pushReplacementNamed(
                     BookDetailScreen.routeName,
                     arguments: bookList[index].id,
                   );
                 },
                 child: Column(
                   children: [
-                    Card(
-                      elevation: 3,
-                      child: Container(
-                        //margin: const EdgeInsets.only(bottom: 19),
-                        height: 81,
-                        width: MediaQuery.of(context).size.width - 50,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(8),
-                            bottomRight: Radius.circular(8),
+                    Dismissible(
+                      onDismissed: (direction) {
+                        setState(() {
+                          bookList[index].isFavourite =
+                              !bookList[index].isFavourite;
+                        });
+                      },
+                      key: ValueKey(bookList[index].id),
+                      background: Align(
+                        alignment: Alignment.centerRight,
+                        child: const Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.red,
+                            radius: 30,
+                            child: Icon(
+                              Icons.delete_outlined,
+                              color: Colors.white,
+                              size: 30,
+                            ),
                           ),
-                          color: kBackgroundColor,
                         ),
-                        /** Make the list dimissible so user can dismiss their favourites at any time */
-                        child: Dismissible(
-                          onDismissed: (direction) {
-                            setState(() {
-                              bookList[index].isFavourite =
-                                  !bookList[index].isFavourite;
-                            });
-                          },
-                          key: ValueKey(bookList[index].id),
-                          background: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8.0),
-                              ),
-                              color: Colors.red,
+                      ),
+                      direction: DismissDirection.endToStart,
+                      child: Card(
+                        elevation: 3,
+                        child: Container(
+                          height: 81,
+                          width: MediaQuery.of(context).size.width - 50,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              bottomRight: Radius.circular(8),
                             ),
-                            alignment: Alignment.centerRight,
-                            child: const Padding(
-                              padding: EdgeInsets.all(15.0),
-                              child: Icon(
-                                Icons.delete_outlined,
-                                color: Colors.white,
-                                size: 35,
-                              ),
-                            ),
+                            color: kBackgroundColor,
                           ),
-                          direction: DismissDirection.endToStart,
                           child: Row(
                             children: [
                               Container(

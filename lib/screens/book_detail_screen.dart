@@ -64,7 +64,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                             if (Navigator.of(context).canPop()) {
                               Navigator.of(context).pop();
                             } else {
-                              print('I am hero');
+                              
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   '/home', (route) => false);
                             }

@@ -24,10 +24,14 @@ class CartItemListView extends StatelessWidget {
         ),
         child: Align(
           alignment: Alignment.centerRight,
-          child: Icon(
-            Icons.delete_forever_outlined,
-            size: 32,
-            color: Colors.red,
+          child: CircleAvatar(
+            backgroundColor: Colors.red,
+            radius: 25,
+            child: Icon(
+              Icons.delete_forever_outlined,
+              size: 25,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
@@ -35,73 +39,79 @@ class CartItemListView extends StatelessWidget {
         Provider.of<CartProvider>(context, listen: false)
             .removeFromCart(bookId);
       },
-      child: Card(
-        elevation: 5,
-        margin: const EdgeInsets.only(bottom: 15),
-        child: Container(
-          //margin: const EdgeInsets.only(bottom: 19),
-          height: 60,
-          width: MediaQuery.of(context).size.width - 50,
-          color: kBackgroundColor,
-          child: Row(
-            children: [
-              Container(
-                height: 60,
-                width: 49,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                  color: kMainColor,
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                  child: Image.network(
-                    bookDetails.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 21,
-              ),
-              Flexible(
-        
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 15,),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        bookDetails.title,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.openSans(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: kBlackColor,
-                        ),
+      child: Column(
+        children: [
+          Card(
+            elevation: 5,
+            //margin: const EdgeInsets.only(bottom: 15),
+            child: Container(
+              //margin: const EdgeInsets.only(bottom: 19),
+              height: 60,
+              width: MediaQuery.of(context).size.width - 50,
+              color: kBackgroundColor,
+              child: Row(
+                children: [
+                  Container(
+                    height: 60,
+                    width: 49,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
                       ),
-                      const SizedBox(
-                        height: 5,
+                      color: kMainColor,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(5),
                       ),
-                      Text(
-                        '\$${bookDetails.amount}',
-                        style: GoogleFonts.openSans(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: kBlackColor,
-                        ),
+                      child: Image.network(
+                        bookDetails.imageUrl,
+                        fit: BoxFit.cover,
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  const SizedBox(
+                    width: 21,
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        right: 15,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            bookDetails.title,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.openSans(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: kBlackColor,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '\$${bookDetails.amount}',
+                            style: GoogleFonts.openSans(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: kBlackColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+          const SizedBox(height: 10,),
+        ],
       ),
     );
   }

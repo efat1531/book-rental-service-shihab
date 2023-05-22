@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/widgets.dart';
 
-import '../models/book_provider.dart';
+import '../models/bookItem.dart';
 
 class BookListProvider with ChangeNotifier {
   final List<BookItem> _bookList = [
