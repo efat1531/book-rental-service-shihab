@@ -11,7 +11,7 @@ class CartItemListView extends StatelessWidget {
   CartItemListView(this.bookId);
   @override
   Widget build(BuildContext context) {
-    final bookDetails = Provider.of<BookListProvider>(context, listen: false)
+    final _bookDetails = Provider.of<BookListProvider>(context, listen: false)
         .getItemById(bookId);
 
     return Dismissible(
@@ -65,7 +65,7 @@ class CartItemListView extends StatelessWidget {
                         Radius.circular(5),
                       ),
                       child: Image.network(
-                        bookDetails.imageUrl,
+                        _bookDetails.imageUrl,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -83,7 +83,7 @@ class CartItemListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            bookDetails.title,
+                            _bookDetails.title,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.openSans(
                               fontSize: 16,
@@ -95,7 +95,7 @@ class CartItemListView extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            '\$${bookDetails.amount}',
+                            '\$${_bookDetails.amount}',
                             style: GoogleFonts.openSans(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,

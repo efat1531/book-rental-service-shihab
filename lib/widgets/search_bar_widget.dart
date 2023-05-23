@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,20 +11,23 @@ import '../screens/search_book_screen.dart';
 class SearchBarWidget extends StatelessWidget {
   //const SearchBarWidget({super.key});
 
-  final searchBarInput = TextEditingController();
+  final _searchBarInput = TextEditingController();
 
+  /// to clear the search feild
   void clearTextFeild() {
-    searchBarInput.clear();
+    _searchBarInput.clear();
   }
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * This controls when the button pressed which books will be loaded
+     */
     void searchBarButtonPressed() {
-      final String inputText = searchBarInput.text;
-      print('User has tapped -> ${inputText}');
+      final String _inputText = _searchBarInput.text;
       clearTextFeild();
       Navigator.of(context)
-          .pushNamed(SearchBookScreen.routeName, arguments: inputText);
+          .pushNamed(SearchBookScreen.routeName, arguments: _inputText);
     }
 
     return Container(
@@ -32,8 +37,11 @@ class SearchBarWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10), color: kLightGreyColor),
       child: Stack(
         children: [
+          /**
+           * This TextFeild Take input of the text and sends it to controller
+           */
           TextField(
-            controller: searchBarInput,
+            controller: _searchBarInput,
             maxLengthEnforcement: MaxLengthEnforcement.none,
             style: GoogleFonts.openSans(
                 fontSize: 12, color: kBlackColor, fontWeight: FontWeight.w600),
@@ -46,6 +54,9 @@ class SearchBarWidget extends StatelessWidget {
                   fontSize: 12, color: kGreyColor, fontWeight: FontWeight.w600),
             ),
           ),
+          /**
+           * These two position widget hold inkwell for making the search button
+           */
           Positioned(
             right: 0,
             child: InkWell(

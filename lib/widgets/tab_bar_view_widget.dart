@@ -11,6 +11,9 @@ class TabBarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * This handle which book list we want to get in the tab bar
+     */
     final bookList = _choosedIndex == 0
         ? Provider.of<BookListProvider>(context)
             .educationBookList
@@ -19,6 +22,9 @@ class TabBarViewWidget extends StatelessWidget {
                 .fictionBookList
             : Provider.of<BookListProvider>(context)
                 .nonfictionBookList;
+     /**
+      * This listview builder build the list view to show books
+      */
     return ListView.builder(
       padding: const EdgeInsets.only(left: 25, right: 6),
       itemCount: bookList.length,
@@ -26,6 +32,9 @@ class TabBarViewWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return GestureDetector(
+          /**
+           * Here we register taps made on the book and go to book detail screen
+           */
           onTap: () {
             Navigator.of(context).pushNamed(
               BookDetailScreen.routeName,

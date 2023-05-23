@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CartProvider(),
         ),
+        /**
+         * Order Provider for order data and others
+         */
         ChangeNotifierProvider(
           create: (context) => OrderProvider(),
         )
@@ -44,17 +47,44 @@ class MyApp extends StatelessWidget {
         home: HomeScreen(),
         initialRoute: '/home',
         routes: {
+          /**
+           * Home route /home
+           */
           '/home': (context) => HomeScreen(),
+          /**
+           * Book Detail Screen route for showing book details
+           */
           BookDetailScreen.routeName: (context) => BookDetailScreen(),
+          /**
+           * All book of certain category route for showing books
+           */
           AllBookScreen.routeName: (context) => AllBookScreen(),
+          /**
+           * Search Book Screen for using search bar and view result
+           */
           SearchBookScreen.routeName: (context) => SearchBookScreen(),
+          /**
+           * Order Screen for showing all the orders made by user
+           */
           OrderHistoryScreen.routeName: (context) => OrderHistoryScreen(),
+          /**
+           * Favourite Screen for showing favourite books of the user
+           */
           FavouriteScreen.routeName: (context) => FavouriteScreen(),
+          /**
+           * Cart Screen for showing the items in the cart and edit
+           */
           CartScreen.routeName: (context) => CartScreen(),
         },
+        /**
+         * If any route is not properly loaded.
+         */
         onGenerateRoute: (settings) {
           return MaterialPageRoute(builder: (context) => HomeScreen());
         },
+        /**
+         * If any route is missing then this will bring to home screen
+         */
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) => HomeScreen());
         },

@@ -6,13 +6,20 @@ import '../providers/book_list_provider.dart';
 import '../models/bookItem.dart';
 
 class SimilarBookListViewBuilder extends StatelessWidget {
-  final BookItem receivedBook;
-  const SimilarBookListViewBuilder(this.receivedBook);
+  // ignore: slash_for_doc_comments
+  /**
+   * This control which book we are receiving 
+   */
+  final BookItem _receivedBook;
+  const SimilarBookListViewBuilder(this._receivedBook);
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * Fetching similar books of that category in random order
+     */
     final similarBookList =
-        Provider.of<BookListProvider>(context).similarBookList(receivedBook);
+        Provider.of<BookListProvider>(context).similarBookList(_receivedBook);
     return Padding(
       padding: const EdgeInsets.only(left: 25, right: 25,top: 10),
       child: ListView.builder(

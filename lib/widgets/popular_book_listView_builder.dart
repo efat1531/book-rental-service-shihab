@@ -13,22 +13,28 @@ class PopularBookListViewBuilder extends StatelessWidget {
   
   Widget build(BuildContext context) {
     /** Received the Book List for display */
-    final bookList =
+    final _bookList =
         Provider.of<BookListProvider>(context).popularList;
     /** This will build the list for display data */
     return ListView.builder(
       padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
-      itemCount: bookList.length,
+      itemCount: _bookList.length,
       itemBuilder: (context, index) {
+        /**
+         * This will detect if user wants to see any book details. If want it will take it forward
+         */
         return GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
               BookDetailScreen.routeName,
-              arguments: bookList[index].id,
+              arguments: _bookList[index].id,
             );
           },
+          /**
+           * Here we build the UI how a book can be shown to user on the list
+           */
           child: Container(
             margin: const EdgeInsets.only(bottom: 19),
             height: 81,
@@ -44,7 +50,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                     color: kMainColor,
                   ),
                   child: Image.network(
-                    bookList[index].imageUrl,
+                    _bookList[index].imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -57,7 +63,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        bookList[index].title,
+                        _bookList[index].title,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.openSans(
                           fontSize: 16,
@@ -69,7 +75,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        bookList[index].authorName,
+                        _bookList[index].authorName,
                         style: GoogleFonts.openSans(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
@@ -80,7 +86,7 @@ class PopularBookListViewBuilder extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        '\$${bookList[index].amount}',
+                        '\$${_bookList[index].amount}',
                         style: GoogleFonts.openSans(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,

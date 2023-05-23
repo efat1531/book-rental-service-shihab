@@ -12,9 +12,9 @@ class SearchBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String searchText = ModalRoute.of(context)!.settings.arguments as String;
-    final filteredBookList =
-        Provider.of<BookListProvider>(context).searchBook(searchText);
+    String _searchText = ModalRoute.of(context)!.settings.arguments as String;
+    final _filteredBookList =
+        Provider.of<BookListProvider>(context).searchBook(_searchText);
     return Scaffold(
       drawer: MainDrawer(),
       body: ListView(
@@ -58,7 +58,7 @@ class SearchBookScreen extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  searchText,
+                  _searchText,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.openSans(
@@ -85,13 +85,13 @@ class SearchBookScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: filteredBookList.length,
+            itemCount: _filteredBookList.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).pushNamed(
                     BookDetailScreen.routeName,
-                    arguments: filteredBookList[index].id,
+                    arguments: _filteredBookList[index].id,
                   );
                 },
                 child: Container(
@@ -109,7 +109,7 @@ class SearchBookScreen extends StatelessWidget {
                           color: kMainColor,
                         ),
                         child: Image.network(
-                          filteredBookList[index].imageUrl,
+                          _filteredBookList[index].imageUrl,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -122,7 +122,7 @@ class SearchBookScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              filteredBookList[index].title,
+                              _filteredBookList[index].title,
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.openSans(
                                 fontSize: 16,
@@ -134,7 +134,7 @@ class SearchBookScreen extends StatelessWidget {
                               height: 5,
                             ),
                             Text(
-                              filteredBookList[index].authorName,
+                              _filteredBookList[index].authorName,
                               style: GoogleFonts.openSans(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
@@ -145,7 +145,7 @@ class SearchBookScreen extends StatelessWidget {
                               height: 5,
                             ),
                             Text(
-                              '\$${filteredBookList[index].amount}',
+                              '\$${_filteredBookList[index].amount}',
                               style: GoogleFonts.openSans(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
