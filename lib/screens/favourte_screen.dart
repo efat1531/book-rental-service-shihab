@@ -19,6 +19,7 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final bookList = Provider.of<BookListProvider>(context).favourites;
     return Scaffold(
       drawer: MainDrawer(),

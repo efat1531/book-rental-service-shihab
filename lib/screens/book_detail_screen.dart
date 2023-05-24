@@ -17,18 +17,41 @@ class BookDetailScreen extends StatefulWidget {
 class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final bookId = ModalRoute.of(context)!.settings.arguments as String;
     final bookDetails = Provider.of<BookListProvider>(context, listen: false)
         .getItemById(bookId);
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
         height: 49,
         color: Colors.transparent,
         child: TextButton(
           onPressed: () {
             Provider.of<CartProvider>(context, listen: false)
                 .addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                duration: const Duration(seconds: 2),
+                behavior: SnackBarBehavior.floating,
+                content: Text(
+                  'Added to cart',
+                  style: GoogleFonts.openSans(
+                    fontSize: 15,
+                  ),
+                ),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  disabledTextColor: kWhiteColor,
+                  textColor: Colors.amber[700],
+                  onPressed: () {
+                    Provider.of<CartProvider>(context, listen: false)
+                        .removeFromCart(bookId);
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  },
+                ),
+              ),
+            );
           },
           style: TextButton.styleFrom(
             backgroundColor: kMainColor,
@@ -38,7 +61,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
           child: Text(
             'Add to Cart',
             style: GoogleFonts.openSans(
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: FontWeight.w600,
               color: kWhiteColor,
             ),
@@ -53,7 +76,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                 automaticallyImplyLeading: false,
                 backgroundColor: kMainColor,
                 expandedHeight: MediaQuery.of(context).size.height * 0.5,
-                flexibleSpace: Container(
+                flexibleSpace: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Stack(
                     children: [
@@ -87,6 +110,24 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                         top: 35,
                         child: GestureDetector(
                           onTap: () {
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                elevation: 5,
+                                behavior: SnackBarBehavior.floating,
+                                //backgroundColor: Colors.black87,
+                                content: Text(
+                                  bookDetails.isFavourite
+                                      ? 'Removed from favourites.'
+                                      : 'Added in favourites',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 15,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                duration: const Duration(seconds: 1),
+                              ),
+                            );
                             setState(
                               () {
                                 bookDetails.isFavourite =

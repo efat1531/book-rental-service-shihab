@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     return DefaultTabController(
       length: 3,
       child: Builder(builder: (context) {

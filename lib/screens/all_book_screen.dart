@@ -12,6 +12,7 @@ class AllBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final int choosedType = ModalRoute.of(context)!.settings.arguments as int;
     final bookList = choosedType == 0
         ? Provider.of<BookListProvider>(context).educationBookList

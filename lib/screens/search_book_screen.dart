@@ -12,6 +12,7 @@ class SearchBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     String _searchText = ModalRoute.of(context)!.settings.arguments as String;
     final _filteredBookList =
         Provider.of<BookListProvider>(context).searchBook(_searchText);

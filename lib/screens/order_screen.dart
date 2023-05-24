@@ -12,6 +12,7 @@ class OrderHistoryScreen extends StatelessWidget {
   static String routeName = '/home/orders';
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final orderData = Provider.of<OrderProvider>(context);
     return Scaffold(
       drawer: MainDrawer(),

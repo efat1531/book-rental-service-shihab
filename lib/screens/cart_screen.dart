@@ -15,6 +15,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final cartItemProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       drawer: MainDrawer(),
@@ -71,11 +72,13 @@ class CartScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Provider.of<OrderProvider>(context, listen: false)
-                          .addOrder(
-                        cartItemProvider.getTotalAmount(),
-                        cartItemProvider.cartItem.values.toList(),
-                      );
+                      if (cartItemProvider.getTotalAmount() != 0) {
+                        Provider.of<OrderProvider>(context, listen: false)
+                            .addOrder(
+                          cartItemProvider.getTotalAmount(),
+                          cartItemProvider.cartItem.values.toList(),
+                        );
+                      }
                       cartItemProvider.clear();
                     },
                     child: Text(
