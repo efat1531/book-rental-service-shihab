@@ -17,6 +17,41 @@ class CartItemListView extends StatelessWidget {
     return Dismissible(
       key: ValueKey(bookId),
       direction: DismissDirection.endToStart,
+      confirmDismiss: (direction) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Are you sure about this?'),
+          content: Text('Do want to remove this item from cart?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                'Yes',
+                style: GoogleFonts.openSans(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromRGBO(234, 145, 175, 1),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                'No',
+                style: GoogleFonts.openSans(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromRGBO(234, 145, 175, 1),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       background: const Padding(
         padding: EdgeInsets.symmetric(
           vertical: 10,
@@ -110,7 +145,9 @@ class CartItemListView extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

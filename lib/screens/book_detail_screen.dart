@@ -17,7 +17,6 @@ class BookDetailScreen extends StatefulWidget {
 class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final bookId = ModalRoute.of(context)!.settings.arguments as String;
     final bookDetails = Provider.of<BookListProvider>(context, listen: false)
         .getItemById(bookId);
@@ -30,28 +29,6 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
           onPressed: () {
             Provider.of<CartProvider>(context, listen: false)
                 .addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                duration: const Duration(seconds: 2),
-                behavior: SnackBarBehavior.floating,
-                content: Text(
-                  'Added to cart',
-                  style: GoogleFonts.openSans(
-                    fontSize: 15,
-                  ),
-                ),
-                action: SnackBarAction(
-                  label: 'Undo',
-                  disabledTextColor: kWhiteColor,
-                  textColor: Colors.amber[700],
-                  onPressed: () {
-                    Provider.of<CartProvider>(context, listen: false)
-                        .removeFromCart(bookId);
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                  },
-                ),
-              ),
-            );
           },
           style: TextButton.styleFrom(
             backgroundColor: kMainColor,

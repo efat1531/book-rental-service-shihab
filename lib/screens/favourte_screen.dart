@@ -19,7 +19,6 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   Widget build(BuildContext context) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final bookList = Provider.of<BookListProvider>(context).favourites;
     return Scaffold(
       drawer: MainDrawer(),
@@ -61,6 +60,42 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                               !bookList[index].isFavourite;
                         });
                       },
+                      confirmDismiss: (direction) => showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Are you sure about this?'),
+                          content: Text(
+                              'Do you want to remove this from favourites?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(true);
+                              },
+                              child: Text(
+                                'Yes',
+                                style: GoogleFonts.openSans(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(234, 145, 175, 1),
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(false);
+                              },
+                              child: Text(
+                                'No',
+                                style: GoogleFonts.openSans(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(234, 145, 175, 1),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       key: ValueKey(bookList[index].id),
                       background: Align(
                         alignment: Alignment.centerRight,
