@@ -32,7 +32,7 @@ class CartItemListView extends StatelessWidget {
                 style: GoogleFonts.openSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromRGBO(234, 145, 175, 1),
+                  color: const Color.fromRGBO(234, 145, 175, 1),
                 ),
               ),
             ),
@@ -45,7 +45,7 @@ class CartItemListView extends StatelessWidget {
                 style: GoogleFonts.openSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromRGBO(234, 145, 175, 1),
+                  color:const Color.fromRGBO(234, 145, 175, 1),
                 ),
               ),
             ),

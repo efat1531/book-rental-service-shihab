@@ -35,7 +35,7 @@ class AllBookScreen extends StatelessWidget {
                 expandedHeight: 190,
                 flexibleSpace: Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 190,
                       width: double.infinity,
                       child: Image.asset('assets/images/edu_poster.png'),

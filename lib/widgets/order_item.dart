@@ -24,9 +24,9 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
         children: [
           ListTile(
             minLeadingWidth: 10,
-            leading: Container(
+            leading:const SizedBox(
               height: double.infinity,
-              child: const Icon(
+              child: Icon(
                 Icons.timer_sharp,
                 size: 30,
                 color: Color.fromRGBO(217, 146, 167, 1),
@@ -50,7 +50,7 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
                     ? Icons.expand_less_rounded
                     : Icons.expand_more_rounded,
                 size: 30,
-                color: Color.fromRGBO(217, 146, 167, 1),
+                color: const Color.fromRGBO(217, 146, 167, 1),
               ),
               onPressed: () {
                 setState(() {
@@ -79,7 +79,7 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 38,
                                     height: 50,
                                     child: Image.network(element.imageUrl),
