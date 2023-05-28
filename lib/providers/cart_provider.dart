@@ -10,7 +10,7 @@ class CartProvider with ChangeNotifier {
   }
 
   /// this fuction add item to cart
-  void addItem(String bookId, int amount, String title) {
+  void addItem(String bookId, int amount, String title, String imageUrl) {
     if (_cartItem.containsKey(bookId) == false) {
       _cartItem.putIfAbsent(
         bookId,
@@ -18,6 +18,7 @@ class CartProvider with ChangeNotifier {
           id: DateTime.now().toString(),
           amount: amount,
           title: title,
+          imageUrl: imageUrl,
         ),
       );
     }

@@ -20,8 +20,8 @@ class CartItemListView extends StatelessWidget {
       confirmDismiss: (direction) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Are you sure about this?'),
-          content: Text('Do want to remove this item from cart?'),
+          title: const Text('Are you sure about this?'),
+          content: const Text('Do want to remove this item from cart?'),
           actions: [
             TextButton(
               onPressed: () {

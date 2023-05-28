@@ -77,9 +77,16 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
+                                  Container(
+                                    width: 38,
+                                    height: 50,
+                                    child: Image.network(element.imageUrl),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Flexible(
                                     child: Text(
                                       element.title,
@@ -90,9 +97,8 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
+                                  const Flexible(
+                                      fit: FlexFit.tight, child: SizedBox()),
                                   Text(
                                     '${element.amount} TK',
                                     style: GoogleFonts.openSans(
@@ -100,6 +106,7 @@ class _OrderItemListViewBuilderState extends State<OrderItemListViewBuilder> {
                                       fontWeight: FontWeight.w500,
                                       color: kGreyColor,
                                     ),
+                                    ///textAlign: TextAlign.end,
                                   ),
                                 ],
                               ),

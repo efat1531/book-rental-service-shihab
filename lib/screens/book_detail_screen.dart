@@ -27,8 +27,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
         color: Colors.transparent,
         child: TextButton(
           onPressed: () {
-            Provider.of<CartProvider>(context, listen: false)
-                .addItem(bookDetails.id, bookDetails.amount, bookDetails.title);
+            Provider.of<CartProvider>(context, listen: false).addItem(
+              bookDetails.id,
+              bookDetails.amount,
+              bookDetails.title,
+              bookDetails.imageUrl,
+            );
           },
           style: TextButton.styleFrom(
             backgroundColor: kMainColor,
